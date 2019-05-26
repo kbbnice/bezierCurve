@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 550px;
+            background-color: #999;
+            text-align: center;
+        }
+
+        canvas {
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <canvas id="mapCanvas" width="500" height="500">
+            这是一个canvas的替代元素。
+        </canvas>
+    </div>
+
+    <script>
+        +(function () {
+
+            var canvas = document.getElementById("mapCanvas");
+
+            //判断是否支持canvas
+            if (canvas.getContext) {
+
+                //支持：
+                var ctx = canvas.getContext('2d');
+
+                var rectangle = new Path2D();
+                rectangle.rect(10, 10, 50, 50);
+
+                // var circle = new Path2D();
+                // circle.moveTo(125,35);
+                // circle.arc(100, 35, 25, 0, 2*Math.PI);
+
+                
+                // function a(x) {
+                //     var newline = new Path2D("M" + x + " 10 h 80 v 80 h 80 z");
+                //     ctx.strokeStyle = "#ddd";
+                //     ctx.fillStyle = "red";
+                //     ctx.stroke(newline);
+
+                // }
+                // a(150);
+                // a(180);
+                var b = ctx.createLinearGradient(10,10,50,50);
+                b.addColorStop(0, "white");
+                b.addColorStop(0.5, "pink");
+                b.addColorStop(1, "black");
+                // ctx.strokeStyle = "blue";
+                ctx.fillStyle = b;
+                ctx.fillRect(10,10, 50,50);
+                // // ctx.fillStyle = "green";
+                // ctx.fill(circle);
+            }
+        })()
+
+
+
+
+
+    </script>
+</body>
+
+</html>
